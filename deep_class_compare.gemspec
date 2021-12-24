@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "A container class extend gem that could compare the values class in it easily, clearly, and more colloquialism."
   spec.homepage = "https://github.com/koten0224/deep_class_compare"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 2.2.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 

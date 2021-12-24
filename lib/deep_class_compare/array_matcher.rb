@@ -1,5 +1,5 @@
-require "./lib/deep_class_compare/matcher.rb"
-require "./lib/deep_class_compare/container_comparable.rb"
+require "deep_class_compare/matcher.rb"
+require "deep_class_compare/container_comparable.rb"
 module DeepClassCompare
   class ArrayMatcher < Matcher
     include ContainerComparable

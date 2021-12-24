@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
     # Could compare container and value class with simple pattern
     ['string', 'string'].like_a? Array.of(String) => true
     [1, 2].like_a? Array.of(Hash) => false
