@@ -15,6 +15,13 @@ class Array
   end
 end
 
+class Hash
+  def self.of(key_comparable, value_comparable = nil)
+    key_comparable, value_comparable = Object, key_comparable if value_comparable.nil?
+    DeepClassCompare::HashMatcher.new.of(key_comparable, value_comparable)
+  end
+end
+
 class Object
   def like_a?(class_or_matcher)
     if class_or_matcher.is_a? DeepClassCompare::Matcher
