@@ -2,7 +2,7 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/deep_class_compare`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+This is a container class extend gem that could compare the values class in it easily, clearly,and more colloquialism.
 
 ## Installation
 
@@ -22,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+    # Could compare container and value class with simple pattern
+    ['string', 'string'].like_a? Array.of(String) => true
+    [1, 2].like_a? Array.of(Hash) => false
+
+    # Could compare nested value structure
+    [['string'], ['string']].like_a? Array.of(Array).of(String) => true
+
+    # Could match multiple classes within an array
+    [1, 'string'].like_a? Array.of([String, Integer]) => true
+
+    # Could compare key and value classes
+    {symbol: 'string'}.like_a? Hash.of(Symbol, String) => true
+
+    # Compare with more complicated nested condition
+    {'string' => ['a', 'b', [1, 2, 3]]}.like_a? Hash.of(String, Array.of([String, Array.of(Integer)])) => true
+
+    # See more in Rspec
+```
 
 ## Development
 
