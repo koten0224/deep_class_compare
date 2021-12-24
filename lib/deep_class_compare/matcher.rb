@@ -14,5 +14,9 @@ module DeepClassCompare
     def raise_class_required_error!
       raise TypeError.new("class or module required")
     end
+
+    def raise_pattern_error!
+      raise TypeError.new("invlid pattern of compare chain")
+    end
   end
 end
