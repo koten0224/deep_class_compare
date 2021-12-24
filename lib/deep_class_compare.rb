@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "deep_class_compare/version"
-require_relative "deep_class_compare/matcher"
-require_relative "deep_class_compare/array_matcher"
-require_relative "deep_class_compare/hash_matcher"
+require "./lib/deep_class_compare/version"
+require "./lib/deep_class_compare/matcher"
+require "./lib/deep_class_compare/array_matcher"
+require "./lib/deep_class_compare/hash_matcher"
 module DeepClassCompare
   class Error < StandardError; end
   class TypeError < Error; end
