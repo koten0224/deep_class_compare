@@ -22,20 +22,20 @@ RSpec.describe Array do
     end
   end
 
-  pending "#is_a?" do
-    pending "should compare class chain" do
+  context "#like_a?" do
+    context "should compare class chain" do
       it "return true" do
-        expect([[]]).to be_a described_class.of(Array)
-        expect([{}]).to be_a described_class.of(Hash)
-        expect(%w(a)).to be_a described_class.of(String)
-        expect(%i(a)).to be_a described_class.of(Symbol)
+        expect([[]]).to be_like_a described_class.of(Array)
+        expect([{}]).to be_like_a described_class.of(Hash)
+        expect(%w(a)).to be_like_a described_class.of(String)
+        expect(%i(a)).to be_like_a described_class.of(Symbol)
       end
 
       it "return false" do
-        expect([[]]).not_to be_a described_class.of(Symbol)
-        expect([{}]).not_to be_a described_class.of(Array)
-        expect(%w(a)).not_to be_a described_class.of(Hash)
-        expect(%i(a)).not_to be_a described_class.of(String)
+        expect([[]]).not_to be_like_a described_class.of(Symbol)
+        expect([{}]).not_to be_like_a described_class.of(Array)
+        expect(%w(a)).not_to be_like_a described_class.of(Hash)
+        expect(%i(a)).not_to be_like_a described_class.of(String)
       end
     end
 
@@ -48,13 +48,13 @@ RSpec.describe Array do
         ]
       end
       it "return true" do
-        expect(params).to be_a described_class.of(Array).of(Array)
-        expect(params).to be_a described_class.of(Array).of(Array).of(String)
+        expect(params).to be_like_a described_class.of(Array).of(Array)
+        expect(params).to be_like_a described_class.of(Array).of(Array).of(String)
       end
 
       it "return false" do
-        expect(params).not_to be_a described_class.of(Array).of(Hash)
-        expect(params).not_to be_a described_class.of(Array).of(Array).of(Array)
+        expect(params).not_to be_like_a described_class.of(Array).of(Hash)
+        expect(params).not_to be_like_a described_class.of(Array).of(Array).of(Array)
       end
     end
 
@@ -64,11 +64,11 @@ RSpec.describe Array do
       end
 
       it "return true" do
-        expect(params).to be_a described_class.of([String, Symbol, Integer])
+        expect(params).to be_like_a described_class.of([String, Symbol, Integer])
       end
 
       it "return false" do
-        expect(params).not_to be_a described_class.of([String, Symbol])
+        expect(params).not_to be_like_a described_class.of([String, Symbol])
       end
     end
 
@@ -83,17 +83,17 @@ RSpec.describe Array do
       end
 
       it "return true" do
-        expect(params).to be_a described_class.of(Hash).of(Array)
-        expect(params).to be_a described_class.of(Hash).of(Array).of(String)
-        expect(params).to be_a described_class.of(Hash).of(Symbol, Array)
-        expect(params).to be_a described_class.of(Hash).of(Symbol, Array.of(String))
+        expect(params).to be_like_a described_class.of(Hash).of(Array)
+        expect(params).to be_like_a described_class.of(Hash).of(Array).of(String)
+        expect(params).to be_like_a described_class.of(Hash).of(Symbol, Array)
+        expect(params).to be_like_a described_class.of(Hash).of(Symbol, Array.of(String))
       end
 
       it "return false" do
-        expect(params).not_to be_a described_class.of(Array).of(Array)
-        expect(params).not_to be_a described_class.of(Hash).of(Array).of(Symbol)
-        expect(params).not_to be_a described_class.of(Hash).of(Symbol, String)
-        expect(params).not_to be_a described_class.of(Hash).of(Symbol, Array.of(Integer))
+        expect(params).not_to be_like_a described_class.of(Array).of(Array)
+        expect(params).not_to be_like_a described_class.of(Hash).of(Array).of(Symbol)
+        expect(params).not_to be_like_a described_class.of(Hash).of(Symbol, String)
+        expect(params).not_to be_like_a described_class.of(Hash).of(Symbol, Array.of(Integer))
       end
     end
   end
