@@ -9,7 +9,7 @@ module DeepClassCompare
 
     def match?(array)
       # p @chain
-      super && compare_chain(array)
+      super && compare_array_with_chain(array)
     end
 
     def of(*comparable)
@@ -22,6 +22,12 @@ module DeepClassCompare
           end
           raise_pattern_error! if @chain.nil?
         end
+      end
+    end
+
+    def compare_array_with_chain(array)
+      array.all? do |value|
+        compare_chain(value, @chain)
       end
     end
   end

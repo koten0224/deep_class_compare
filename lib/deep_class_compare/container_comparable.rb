@@ -1,13 +1,11 @@
 module DeepClassCompare
   module ContainerComparable
     private
-    def compare_chain(array)
-      array.all? do |value|
-        case @chain
-        when Matcher then @chain.match?(value)
-        when Array then @chain.any? { |matcher| matcher.match?(value) }
-        else true
-        end
+    def compare_chain(value, chain)
+      case chain
+      when Matcher then chain.match?(value)
+      when Array then chain.any? { |matcher| matcher.match?(value) }
+      else true
       end
     end
 
