@@ -5,6 +5,11 @@ module DeepClassCompare
       super(Array)
     end
 
+    def match?(array)
+      # p @chain
+      super && compare_chain(array)
+    end
+
     def of(comparable)
       dup.tap do |matcher|
         matcher.instance_eval do
@@ -19,6 +24,16 @@ module DeepClassCompare
     end
 
     private
+    def compare_chain(array)
+      array.all? do |value|
+        case @chain
+        when Matcher then @chain.match?(value)
+        when Array then @chain.any? { |matcher| matcher.match?(value) }
+        else true
+        end
+      end
+    end
+
     def parse_comparable_to_chain(comparable)
       case comparable
       when Matcher
