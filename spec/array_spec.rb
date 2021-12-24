@@ -39,7 +39,7 @@ RSpec.describe Array do
       end
     end
 
-    pending "should compare class chain of three or more" do
+    context "should compare class chain of three or more" do
       let(:params) do
         [
           [
@@ -58,7 +58,7 @@ RSpec.describe Array do
       end
     end
 
-    pending "should compare with different types of values" do
+    context "should compare with different types of values" do
       let(:params) do
         ['a', :b, 123]
       end
