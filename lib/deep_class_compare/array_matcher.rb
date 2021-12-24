@@ -1,6 +1,10 @@
 require "./lib/deep_class_compare/matcher.rb"
 module DeepClassCompare
   class ArrayMatcher < Matcher
+    def initialize
+      super(Array)
+    end
+
     def of(comparable)
       dup.tap do |matcher|
         matcher.instance_eval do
@@ -39,7 +43,7 @@ module DeepClassCompare
 
     def parse_class_to_matcher(klass)
       if klass == Array
-        ArrayMatcher.new(klass)
+        ArrayMatcher.new
       else 
         Matcher.new(klass)
       end
