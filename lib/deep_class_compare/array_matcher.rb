@@ -2,7 +2,7 @@ require "./lib/deep_class_compare/matcher.rb"
 require "./lib/deep_class_compare/container_comparable.rb"
 module DeepClassCompare
   class ArrayMatcher < Matcher
-  include ContainerComparable
+    include ContainerComparable
     def initialize
       super(Array)
     end
@@ -25,6 +25,7 @@ module DeepClassCompare
       end
     end
 
+    private
     def compare_array_with_chain(array)
       array.all? do |value|
         compare_chain(value, @chain)

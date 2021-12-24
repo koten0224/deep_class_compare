@@ -23,6 +23,7 @@ module DeepClassCompare
       end
     end
 
+    private
     def compare_hash_with_chain(hash)
       hash.all? do |key, value|
         compare_chain(key, @key_chain) &&

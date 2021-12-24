@@ -11,12 +11,9 @@ module DeepClassCompare
 
     def parse_comparable_to_chain(comparable)
       case comparable
-      when Matcher
-        comparable
-      when Array
-        parse_array_to_chain(comparable)
-      when Class
-        parse_class_to_matcher(comparable)
+      when Matcher then comparable
+      when Array then parse_array_to_chain(comparable)
+      when Class then parse_class_to_matcher(comparable)
       end        
     end
 
@@ -32,12 +29,9 @@ module DeepClassCompare
     end
 
     def parse_class_to_matcher(klass)
-      if klass == Array
-        ArrayMatcher.new
-      elsif klass == Hash
-        HashMatcher.new
-      else 
-        Matcher.new(klass)
+      if klass == Array then ArrayMatcher.new
+      elsif klass == Hash then HashMatcher.new
+      else Matcher.new(klass)
       end
     end
   end
