@@ -10,8 +10,8 @@ RSpec.describe Hash do
     it { expect { subject.of(Object) }.to raise_error }
   end
 
-  pending "#like_a?" do
-    pending "should compare key and value class" do
+  context "#like_a?" do
+    context "should compare key and value class" do
       it "return true" do
         expect({a: []}).to be_like_a described_class.of(Symbol, Array)
         expect({'a' => 1}).to be_like_a described_class.of(String, Integer)
@@ -27,7 +27,7 @@ RSpec.describe Hash do
       end
     end
 
-    pending "should compare value only" do
+    context "should compare value only" do
       it "return true" do
         expect({a: []}).to be_like_a described_class.of(Array)
         expect({'a' => 1}).to be_like_a described_class.of(Integer)
@@ -43,7 +43,7 @@ RSpec.describe Hash do
       end
     end
 
-    pending "should compare class chain by pass a matcher" do
+    context "should compare class chain by pass a matcher" do
       let(:params) do
         {
           a: %w(a b c),
@@ -59,7 +59,7 @@ RSpec.describe Hash do
       end
     end
 
-    pending "should compare with different types of values" do
+    context "should compare with different types of values" do
       let(:params) do
         {
           a: %w(a b c),

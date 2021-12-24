@@ -34,8 +34,8 @@ module DeepClassCompare
     def parse_class_to_matcher(klass)
       if klass == Array
         ArrayMatcher.new
-      # elsif klass == Hash
-      #   HashMatcher.new
+      elsif klass == Hash
+        HashMatcher.new
       else 
         Matcher.new(klass)
       end

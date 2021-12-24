@@ -72,7 +72,7 @@ RSpec.describe Array do
       end
     end
 
-    pending "should compare class chain of three or more with hash" do
+    context "should compare class chain of three or more with hash" do
       let(:params) do
         [
           {
@@ -84,14 +84,14 @@ RSpec.describe Array do
 
       it "return true" do
         expect(params).to be_like_a described_class.of(Hash).of(Array)
-        expect(params).to be_like_a described_class.of(Hash).of(Array).of(String)
+        expect(params).to be_like_a described_class.of(Hash).of(Array.of(String))
         expect(params).to be_like_a described_class.of(Hash).of(Symbol, Array)
         expect(params).to be_like_a described_class.of(Hash).of(Symbol, Array.of(String))
       end
 
       it "return false" do
         expect(params).not_to be_like_a described_class.of(Array).of(Array)
-        expect(params).not_to be_like_a described_class.of(Hash).of(Array).of(Symbol)
+        expect(params).not_to be_like_a described_class.of(Hash).of(Array.of(Symbol))
         expect(params).not_to be_like_a described_class.of(Hash).of(Symbol, String)
         expect(params).not_to be_like_a described_class.of(Hash).of(Symbol, Array.of(Integer))
       end
