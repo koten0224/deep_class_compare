@@ -1,4 +1,3 @@
-
 module DeepClassCompare
   class Matcher
     def initialize(base)
@@ -16,7 +15,7 @@ module DeepClassCompare
     end
 
     def raise_pattern_error!
-      raise TypeError.new("invlid pattern of compare chain")
+      raise TypeError.new("invalid pattern of compare chain")
     end
   end
 end
