@@ -14,6 +14,7 @@ module DeepClassCompare
       when Matcher then comparable
       when Array then parse_array_to_chain(comparable)
       when Class then parse_class_to_matcher(comparable)
+      else raise_pattern_error!
       end        
     end
 
