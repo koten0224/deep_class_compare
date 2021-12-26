@@ -1,5 +1,12 @@
 module DeepClassCompare
   class Matcher
+    def self.build(klass)
+      if klass == Array then ArrayMatcher.new
+      elsif klass == Hash then HashMatcher.new
+      else new(klass)
+      end
+    end
+
     def initialize(base)
       @base = base
       raise_class_required_error! unless @base.is_a?(Class)
