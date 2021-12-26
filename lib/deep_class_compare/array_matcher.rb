@@ -6,21 +6,22 @@ module DeepClassCompare
     end
 
     def match?(array)
-      # p @chain
       super && compare_array_with_chain(array)
     end
 
     def of(*comparable)
       dup.tap do |matcher|
-        matcher.instance_eval do
-          @chain = if @chain.nil?
-            parse_comparable_to_chain(comparable.first)
-          elsif @chain.is_a?(Matcher)
-            @chain.of(*comparable)
-          end
-          raise_pattern_error! if @chain.nil?
-        end
+        matcher.build_chain(*comparable)
       end
+    end
+
+    def build_chain(*comparable)
+      @chain = if @chain.nil?
+        parse_comparable_to_chain(comparable.first)
+      elsif @chain.is_a?(Matcher)
+        @chain.of(*comparable)
+      end
+      raise_pattern_error! if @chain.nil?
     end
 
     private
