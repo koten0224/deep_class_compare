@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deep_class_compare (0.1.0)
+    deep_class_compare (1.0.4)
 
 GEM
   remote: https://rubygems.org/
