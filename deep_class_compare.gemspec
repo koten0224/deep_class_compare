@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "lib/deep_class_compare/version"
-require_relative "lib/deep_class_compare"
+
 Gem::Specification.new do |spec|
   spec.name = "deep_class_compare"
   spec.version = DeepClassCompare::VERSION
