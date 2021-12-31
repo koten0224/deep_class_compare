@@ -1,8 +1,8 @@
 module DeepClassCompare
   class ArrayMatcher < Matcher
     include ContainerComparable
-    def initialize
-      super(Array)
+    def initialize(klass = Array)
+      super(klass)
     end
 
     def match?(array)

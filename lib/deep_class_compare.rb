@@ -12,7 +12,7 @@ end
 
 class Array
   def self.of(value_comparable)
-    DeepClassCompare::ArrayMatcher.new.of(value_comparable)
+    DeepClassCompare::ArrayMatcher.new(self).of(value_comparable)
   end
 end
 
