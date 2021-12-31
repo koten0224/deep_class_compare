@@ -19,7 +19,7 @@ end
 class Hash
   def self.of(key_comparable, value_comparable = nil)
     key_comparable, value_comparable = Object, key_comparable if value_comparable.nil?
-    DeepClassCompare::HashMatcher.new.of(key_comparable, value_comparable)
+    DeepClassCompare::HashMatcher.new(self).of(key_comparable, value_comparable)
   end
 end
 

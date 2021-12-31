@@ -1,8 +1,8 @@
 module DeepClassCompare
   class HashMatcher < Matcher
     include ContainerComparable
-    def initialize
-      super(Hash)
+    def initialize(klass = Hash)
+      super(klass)
     end
 
     def match?(hash)
