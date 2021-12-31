@@ -57,6 +57,70 @@ RSpec.describe InheritArray do
           expect(params).not_to be_like_a Array.of Array.of Integer
         end
       end
+
+      context 'compare inherit aray of inherit hash and return true' do
+        let(:params) do
+          array = InheritArray.new
+          array << InheritHash.new
+          array.first[:symbol] = 'string'
+          array
+        end
+
+        it 'with two class chain' do
+          expect(params).to be_like_a InheritArray.of(InheritHash)
+          expect(params).to be_like_a Array.of(InheritHash)
+          expect(params).to be_like_a InheritArray.of(Hash)
+          expect(params).to be_like_a Array.of(Hash)
+        end
+
+        it 'with three class chain with key and value' do
+          expect(params).to be_like_a InheritArray.of(InheritHash).of(Symbol, String)
+          expect(params).to be_like_a InheritArray.of InheritHash.of Symbol, String
+          expect(params).to be_like_a Array.of(InheritHash).of(Symbol, String)
+          expect(params).to be_like_a Array.of InheritHash.of Symbol, String
+          expect(params).to be_like_a InheritArray.of(Hash).of(Symbol, String)
+          expect(params).to be_like_a InheritArray.of Hash.of Symbol, String
+          expect(params).to be_like_a Array.of(Hash).of(Symbol, String)
+          expect(params).to be_like_a Array.of Hash.of Symbol, String
+        end
+
+        it 'with three class chain with only value' do
+          expect(params).to be_like_a InheritArray.of(InheritHash).of(String)
+          expect(params).to be_like_a InheritArray.of InheritHash.of String
+          expect(params).to be_like_a Array.of(InheritHash).of(String)
+          expect(params).to be_like_a Array.of InheritHash.of String
+          expect(params).to be_like_a InheritArray.of(Hash).of(String)
+          expect(params).to be_like_a InheritArray.of Hash.of String
+          expect(params).to be_like_a Array.of(Hash).of(String)
+          expect(params).to be_like_a Array.of Hash.of String
+        end
+      end
+
+      context 'compare inherit aray of hash and return false' do
+        let(:params) do
+          array = InheritArray.new
+          array << { symbol: 'string' }
+        end
+
+        it 'with two class chain' do
+          expect(params).not_to be_like_a InheritArray.of(InheritHash)
+          expect(params).not_to be_like_a Array.of(InheritHash)
+        end
+
+        it 'with three class chain with key and value' do
+          expect(params).not_to be_like_a InheritArray.of(InheritHash).of(Symbol, String)
+          expect(params).not_to be_like_a InheritArray.of InheritHash.of Symbol, String
+          expect(params).not_to be_like_a Array.of(InheritHash).of(Symbol, String)
+          expect(params).not_to be_like_a Array.of InheritHash.of Symbol, String
+        end
+
+        it 'with three class chain with value only' do
+          expect(params).not_to be_like_a InheritArray.of(InheritHash).of(String)
+          expect(params).not_to be_like_a InheritArray.of InheritHash.of String
+          expect(params).not_to be_like_a Array.of(InheritHash).of(String)
+          expect(params).not_to be_like_a Array.of InheritHash.of String
+        end
+      end
     end
   end
 end
