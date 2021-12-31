@@ -6,7 +6,7 @@ RSpec.describe InheritHash do
     context ".of" do
       subject { described_class.of(Object, Object) }
       it { expect { subject }.not_to raise_error }
-      it { expect { subject.of(Object) }.to raise_error }
+      it { expect { subject.of(Object) }.to raise_error(DeepClassCompare::TypeError) }
     end
 
     context "#like_a?" do

@@ -8,17 +8,17 @@ RSpec.describe Array do
     it { is_expected.to be_a DeepClassCompare::Matcher }
     it { is_expected.to be_respond_to(:of) }
     it { expect { subject }.not_to raise_error }
-    it { expect { subject.of([]) }.to raise_error }
+    it { expect { subject.of([]) }.to raise_error(DeepClassCompare::TypeError) }
     it { expect { subject.of([Object]) }.not_to raise_error }
-    it { expect { subject.of('something') }.to raise_error }
-    it { expect { subject.of(['something']) }.to raise_error }
+    it { expect { subject.of('something') }.to raise_error(DeepClassCompare::TypeError) }
+    it { expect { subject.of(['something']) }.to raise_error(DeepClassCompare::TypeError) }
 
     it "not allow to chain after a non-container class" do
-      expect { Array.of(String).of(Integer) }.to raise_error
+      expect { Array.of(String).of(Integer) }.to raise_error(NoMethodError)
     end
 
     it "not allow to chain after a multi-compare" do
-      expect { Array.of([String, Array]).of(Integer) }.to raise_error
+      expect { Array.of([String, Array]).of(Integer) }.to raise_error(DeepClassCompare::TypeError)
     end
   end
 

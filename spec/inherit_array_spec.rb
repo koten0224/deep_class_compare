@@ -6,7 +6,7 @@ RSpec.describe InheritArray do
     context ".of" do
       subject { described_class.of(Object) }
       it { expect { subject }.not_to raise_error }
-      it { expect { subject.of(Object) }.to raise_error }
+      it { expect { subject.of(Object) }.to raise_error(NoMethodError) }
       it { expect { described_class.of(described_class).of(described_class) }.not_to raise_error }
     end
 

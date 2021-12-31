@@ -7,7 +7,7 @@ RSpec.describe Hash do
     subject { Hash.of(Symbol, Array) }
     it { is_expected.to be_a DeepClassCompare::Matcher }
     it { expect { subject }.not_to raise_error }
-    it { expect { subject.of(Object) }.to raise_error }
+    it { expect { subject.of(Object) }.to raise_error(DeepClassCompare::TypeError) }
   end
 
   context "#like_a?" do
