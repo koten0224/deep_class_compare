@@ -1,8 +1,8 @@
 module DeepClassCompare
   class Matcher
     def self.build(klass)
-      if klass == Array then ArrayMatcher.new
-      elsif klass == Hash then HashMatcher.new
+      if klass.ancestors.include?(Array) then ArrayMatcher.new(klass)
+      elsif klass.ancestors.include?(Hash) then HashMatcher.new(klass)
       else new(klass)
       end
     end
