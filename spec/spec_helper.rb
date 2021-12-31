@@ -13,3 +13,11 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+class InheritArray < Array
+
+end
+
+class InheritHash < Hash
+
+end
