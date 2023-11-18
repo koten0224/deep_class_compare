@@ -9,7 +9,7 @@ module DeepClassCompare
 
     def initialize(base)
       @base = base
-      raise_class_required_error! unless @base.is_a?(Class)
+      raise_class_required_error! unless @base.is_a?(Module)
     end
 
     def match?(value)
